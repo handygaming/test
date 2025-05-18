@@ -6,7 +6,7 @@ import { useEffect, useState } from "react";
 const axios = require("axios");
 var moment = require("moment");
 export default function Home() {
-  let date = moment().format("DD-MM-YYYY");
+  let [date, setdate] = useState("00-00-0000");
   let [times, settimes] = useState({
     Fajr: "00:00",
     Dhuhr: "00:00",
@@ -22,6 +22,7 @@ export default function Home() {
   }
   useEffect(() => {
     getdata();
+    setdate(moment().format("DD-MM-YYYY"));
   }, []);
   return (
     <div className={styles.main}>
