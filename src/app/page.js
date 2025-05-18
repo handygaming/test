@@ -3,6 +3,13 @@ import Image from "next/image";
 import styles from "./page.module.css";
 import Card from "./comps/Card";
 import { useEffect, useState } from "react";
+
+// import material ui
+import InputLabel from "@mui/material/InputLabel";
+import MenuItem from "@mui/material/MenuItem";
+import FormControl from "@mui/material/FormControl";
+import Select from "@mui/material/Select";
+
 const axios = require("axios");
 var moment = require("moment");
 export default function Home() {
@@ -14,9 +21,10 @@ export default function Home() {
     Maghrib: "00:00",
     Isha: "00:00",
   });
+  let [city, setcity] = useState("Cairo");
   async function getdata() {
     let respose = await axios.get(
-      "https://api.aladhan.com/v1/timings?latitude=30.5266&longitude=30.3811&method=5"
+      `https://api.aladhan.com/v1/timingsByCity?city=Cairo&country=Egypt&method=5`
     );
     settimes(respose.data.data.timings);
   }
@@ -27,7 +35,7 @@ export default function Home() {
   return (
     <div className={styles.main}>
       <div className={styles.maincard}>
-        <div>
+        <div style={{ marginBottom: "25px" }}>
           <p>{date}</p>
           <h1>EGYPT</h1>
         </div>
