@@ -35,7 +35,7 @@ export default function Home() {
   return (
     <div className={styles.main}>
       <div className={styles.maincard}>
-        <div style={{ marginBottom: "25px" }}>
+        <div style={{ marginBottom: "25px", marginRight: "30px" }}>
           <p>{date}</p>
           <h1>EGYPT</h1>
         </div>
